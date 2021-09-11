@@ -2,6 +2,8 @@
 <?php
 error_reporting(E_ALL);
 
-require_once 'config.php';
+chdir(dirname(__FILE__));
+
+require_once 'config';
 
 passthru($sqlite_exec." ".$db_location." < export_hasil.sql");

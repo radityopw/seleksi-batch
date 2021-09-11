@@ -1,7 +1,10 @@
 #! /usr/bin/php
 <?php 
 error_reporting(E_ALL);
-require_once 'config.php';
+
+chdir(dirname(__FILE__));
+
+require_once 'config';
 
 $db = new SQLite3($db_location);
 
@@ -9,7 +12,7 @@ $jml_sisa = 1;
 
 while($jml_sisa > 0){
 
-	echo "jml sisa ".$jml_sisa.PHP_EOL;
+	//echo "jml sisa ".$jml_sisa.PHP_EOL;
 
 	// ambil 1 antrian 
 	$sql = "SELECT * FROM peserta WHERE status='antri' ORDER BY nilai DESC LIMIT 1";
