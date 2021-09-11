@@ -24,37 +24,37 @@ $db->query($sql);
 echo "CREATING AND LOADING TABLES ....".PHP_EOL;
 
 $sql = "
-        CREATE TABLE IF NOT EXISTS logs (
-            waktu INTEGER,
-            pesan TEXT COLLATE NOCASE
-        );
-        ";
+	CREATE TABLE IF NOT EXISTS logs (
+	    waktu INTEGER,
+	    pesan TEXT COLLATE NOCASE
+	);
+	";
 $db->query($sql);
 $sql = "
-        CREATE TABLE IF NOT EXISTS penempatan (
-            KODE_PENEMPATAN TEXT COLLATE NOCASE,
-            DAYA_TAMPUNG INTEGER
-        );
-        ";
+	CREATE TABLE IF NOT EXISTS penempatan (
+	    KODE_PENEMPATAN TEXT COLLATE NOCASE,
+	    DAYA_TAMPUNG INTEGER
+	);
+	";
 $db->query($sql);
 $sql = "
-        CREATE TABLE IF NOT EXISTS peserta (
-            KODE_PESERTA TEXT COLLATE NOCASE,
-            KODE_PENEMPATAN TEXT COLLATE NOCASE,
-            PIL_KE INTEGER,
-            NILAI NUMERIC
-        );
-        ";
+	CREATE TABLE IF NOT EXISTS peserta (
+	    KODE_PESERTA TEXT COLLATE NOCASE,
+	    KODE_PENEMPATAN TEXT COLLATE NOCASE,
+	    PIL_KE INTEGER,
+	    NILAI NUMERIC
+	);
+	";
 $db->query($sql);
 
 
 $sql = "
-        CREATE VIEW IF NOT EXISTS penempatan_jml_diterima as 
-        SELECT KODE_PENEMPATAN,count(*) as JML_DITERIMA
-        FROM peserta 
-        WHERE diterima = 1
-        GROUP BY KODE_PENEMPATAN;
-        ";
+	CREATE VIEW IF NOT EXISTS penempatan_jml_diterima as 
+	SELECT KODE_PENEMPATAN,count(*) as JML_DITERIMA
+	FROM peserta 
+	WHERE diterima = 1
+	GROUP BY KODE_PENEMPATAN;
+	";
 $db->query($sql);
 
 
